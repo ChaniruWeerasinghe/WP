@@ -8,10 +8,10 @@
     mc:Ignorable="d">
 
     <Window.SystemBackdrop>
-        <MicaBackdrop />
+        <DesktopAcrylicBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid x:Name="RootGrid" RequestedTheme="Light" Padding="16,16,16,8" Background="Transparent" CornerRadius="12">
+    <Grid x:Name="RootGrid" Padding="16,16,16,8" Background="Transparent" CornerRadius="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" /> <!-- Title Bar Area -->
             <RowDefinition Height="*" />    <!-- Grid Area -->
@@ -21,9 +21,16 @@
         <!-- Title Bar Area -->
         <Grid Grid.Row="0" Margin="0,0,0,16">
             <!-- WP Badge -->
-            <Border Background="#4A4D54" CornerRadius="6" Padding="6,4" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Text="WP" FontSize="11" FontWeight="Bold" Foreground="White" />
+            <Border Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" CornerRadius="6" Padding="6,4" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock Text="WP" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
             </Border>
+            
+            <!-- Custom Close Button -->
+            <Button HorizontalAlignment="Right" VerticalAlignment="Center" 
+                    Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="6"
+                    Click="OnCloseClicked" ToolTipService.ToolTip="Close">
+                <FontIcon Glyph="&#xE711;" FontSize="12" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+            </Button>
             
             <!-- Toast Notification -->
             <Border x:Name="ToastNotification" 
@@ -40,11 +47,12 @@
         <!-- Grid layout for images (3x2) -->
         <GridView Grid.Row="1"
                   x:Name="WallpaperGridView"
+                  ItemsSource="{x:Bind ViewModel.Images}"
                   ItemClick="OnImageClicked"
                   IsItemClickEnabled="True"
                   SelectionMode="None"
                   HorizontalAlignment="Center"
-                  ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                  ScrollViewer.VerticalScrollBarVisibility="Auto">
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -117,35 +125,23 @@
                     Visibility="{x:Bind ViewModel.EmptyStateVisibility, Mode=OneWay}"
                     Spacing="12"
                     Opacity="0.7">
-            <FontIcon Glyph="&#xEB9F;" FontSize="42" Foreground="#333333" HorizontalAlignment="Center"/>
-            <TextBlock Text="No wallpapers found" FontSize="16" FontWeight="SemiBold" Foreground="#333333" HorizontalAlignment="Center" />
-            <TextBlock Text="Click the gear icon below to pick a folder." FontSize="12" Foreground="#666666" HorizontalAlignment="Center" />
+            <FontIcon Glyph="&#xEB9F;" FontSize="42" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
+            <TextBlock Text="No wallpapers found" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" />
+            <TextBlock Text="Click the gear icon below to pick a folder." FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
         </StackPanel>
 
         <!-- Bottom Area -->
         <Grid Grid.Row="2" Margin="0,16,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            
-            <!-- Pagination Buttons -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                
-                <Button Grid.Column="0" Content="&lt;" Click="OnPreviousClicked" HorizontalAlignment="Stretch" Margin="0,0,4,0" 
-                        Background="#F0FFFFFF" BorderBrush="#1A000000" BorderThickness="1" CornerRadius="6" Foreground="#333333" FontWeight="Bold" />
-                <Button Grid.Column="1" Content="&gt;" Click="OnNextClicked" HorizontalAlignment="Stretch" Margin="4,0,0,0" 
-                        Background="#F0FFFFFF" BorderBrush="#1A000000" BorderThickness="1" CornerRadius="6" Foreground="#333333" FontWeight="Bold" />
-            </Grid>
-            
-            <!-- Settings Icon -->
-            <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,4,0,0"
-                    Background="Transparent" BorderThickness="0" Padding="4" ToolTipService.ToolTip="Settings" Click="OnSettingsClicked">
-                <FontIcon Glyph="&#xE713;" FontSize="14" Foreground="#666666" />
+            <!-- Settings / Configure Folder Button -->
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" 
+                    BorderBrush="{ThemeResource SystemControlBackgroundBaseLowBrush}" 
+                    BorderThickness="1" CornerRadius="6" Padding="12,8"
+                    Click="OnSettingsClicked">
+                <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+                    <FontIcon Glyph="&#xED25;" FontSize="14" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                    <TextBlock Text="Configure Folder" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                </StackPanel>
             </Button>
         </Grid>
     </Grid>

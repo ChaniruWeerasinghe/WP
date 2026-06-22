@@ -32,8 +32,6 @@ namespace WallpaperSwitcher
 
         public ObservableCollection<ImageModel> Images { get; set; }
         private List<string> _allImages;
-        private int _currentPage = 0;
-        private const int PageSize = 6;
         private const string FolderSettingsKey = "CustomWallpaperFolder";
 
         public MainViewModel()
@@ -43,16 +41,25 @@ namespace WallpaperSwitcher
             LoadImages();
         }
 
+        private string GetSettingsFilePath()
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string appFolder = Path.Combine(folder, "WallpaperSwitcherApp");
+            Directory.CreateDirectory(appFolder);
+            return Path.Combine(appFolder, "settings.txt");
+        }
+
         private void LoadImages()
         {
             try
             {
                 string wallpapersPath = null;
+                string settingsFile = GetSettingsFilePath();
                 
                 // Check if user has saved a custom folder
-                if (ApplicationData.Current.LocalSettings.Values.TryGetValue(FolderSettingsKey, out object savedPath))
+                if (File.Exists(settingsFile))
                 {
-                    wallpapersPath = savedPath as string;
+                    wallpapersPath = File.ReadAllText(settingsFile);
                 }
 
                 // Fallback to default
@@ -74,8 +81,12 @@ namespace WallpaperSwitcher
                                                      s.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
                                          .ToList();
 
-                    _currentPage = 0;
-                    UpdatePagedImages();
+                    Images.Clear();
+                    foreach (var img in _allImages)
+                    {
+                        Images.Add(new ImageModel(img));
+                    }
+                    EmptyStateVisibility = _allImages.Count == 0 ? Microsoft.UI.Xaml.Visibility.Visible : Microsoft.UI.Xaml.Visibility.Collapsed;
                 }
             }
             catch (Exception ex)
@@ -88,39 +99,13 @@ namespace WallpaperSwitcher
         {
             if (Directory.Exists(newPath))
             {
-                ApplicationData.Current.LocalSettings.Values[FolderSettingsKey] = newPath;
+                try
+                {
+                    File.WriteAllText(GetSettingsFilePath(), newPath);
+                }
+                catch { } // Ignore save errors
                 LoadImages();
             }
-        }
-
-        public void NextPage()
-        {
-            if ((_currentPage + 1) * PageSize < _allImages.Count)
-            {
-                _currentPage++;
-                UpdatePagedImages();
-            }
-        }
-
-        public void PreviousPage()
-        {
-            if (_currentPage > 0)
-            {
-                _currentPage--;
-                UpdatePagedImages();
-            }
-        }
-
-        private void UpdatePagedImages()
-        {
-            Images.Clear();
-            var paged = _allImages.Skip(_currentPage * PageSize).Take(PageSize);
-            foreach (var img in paged)
-            {
-                Images.Add(new ImageModel(img));
-            }
-            
-            EmptyStateVisibility = _allImages.Count == 0 ? Microsoft.UI.Xaml.Visibility.Visible : Microsoft.UI.Xaml.Visibility.Collapsed;
         }
     }
 }

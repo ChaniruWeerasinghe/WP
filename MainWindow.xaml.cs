@@ -45,9 +45,10 @@ namespace WallpaperSwitcher
                 if (appWindow.Presenter is OverlappedPresenter presenter)
                 {
                     presenter.IsMaximizable = false;
-                    presenter.IsMinimizable = true; // Set to true so minimize works
+                    presenter.IsMinimizable = false; 
                     presenter.IsResizable = false;
                     presenter.IsAlwaysOnTop = true;
+                    presenter.SetBorderAndTitleBar(true, false); // Completely removes native title bar
                 }
 
                 DisplayArea displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary);
@@ -85,14 +86,9 @@ namespace WallpaperSwitcher
             }
         }
 
-        private void OnPreviousClicked(object sender, RoutedEventArgs e)
+        private void OnCloseClicked(object sender, RoutedEventArgs e)
         {
-            ViewModel.PreviousPage();
-        }
-
-        private void OnNextClicked(object sender, RoutedEventArgs e)
-        {
-            ViewModel.NextPage();
+            this.Close();
         }
 
         private async void OnSettingsClicked(object sender, RoutedEventArgs e)
