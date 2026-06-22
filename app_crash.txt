@@ -1,0 +1,5 @@
+System.InvalidCastException: Unable to cast object of type 'Windows.UI.Color' to type 'Microsoft.UI.Xaml.Media.SolidColorBrush'.
+   at WallpaperSwitcher.MainWindow.ShowToast(String message, Boolean isError) in C:\Work - Chanii\Projects\WP\MainWindow.xaml.cs:line 101
+   at System.Threading.Tasks.Task.<>c.<ThrowAsync>b__128_0(Object state)
+   at Microsoft.UI.Dispatching.DispatcherQueueSynchronizationContext.<>c__DisplayClass2_0.<Post>b__0()
+Unable to cast object of type 'Windows.UI.Color' to type 'Microsoft.UI.Xaml.Media.SolidColorBrush'.
