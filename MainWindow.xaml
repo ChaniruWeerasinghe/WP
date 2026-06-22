@@ -128,7 +128,7 @@
                     Opacity="0.7">
             <FontIcon Glyph="&#xEB9F;" FontSize="42" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
             <TextBlock Text="No wallpapers found" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" />
-            <TextBlock Text="Click the gear icon below to pick a folder." FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
+            <TextBlock Text="Click the button below to configure a folder." FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
         </StackPanel>
 
         <!-- Bottom Area -->
