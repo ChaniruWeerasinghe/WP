@@ -56,13 +56,13 @@
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="160" Height="90">
+                    <Grid Width="192" Height="108">
                         <Border CornerRadius="8" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                             <Image Source="{Binding FilePath}" Stretch="UniformToFill" />
                         </Border>
@@ -141,6 +141,7 @@
                 <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
                     <FontIcon Glyph="{x:Bind ViewModel.FolderIcon, Mode=OneWay}" FontSize="14" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
                     <TextBlock Text="{x:Bind ViewModel.FolderName, Mode=OneWay}" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                    <FontIcon Glyph="&#xE70F;" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="8,0,0,0" />
                 </StackPanel>
             </Button>
         </Grid>
