@@ -134,6 +134,63 @@ namespace WallpaperSwitcher
             this.Close();
         }
 
+        private bool _isPinned = false;
+        private const int NormalWidth = 520;
+        private const int NormalHeight = 440;
+        private const int PinnedWidth = 140;
+        private const int PinnedHeight = 62; 
+
+        private void OnPinClicked(object sender, RoutedEventArgs e)
+        {
+            _isPinned = !_isPinned;
+            
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+            AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
+            
+            DisplayArea displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary);
+            var workArea = displayArea.WorkArea;
+            int marginX = 24; 
+            int marginY = 24; 
+            
+            if (_isPinned)
+            {
+                PinIcon.Glyph = "\uE73F"; // Back to Window
+                ToolTipService.SetToolTip(PinButton, "Expand");
+
+                MainContentGrid.Visibility = Visibility.Collapsed;
+                BottomAreaGrid.Visibility = Visibility.Collapsed;
+                RootGrid.Padding = new Thickness(12, 10, 12, 10);
+                
+                if (appWindow.Presenter is OverlappedPresenter presenter)
+                {
+                    presenter.IsAlwaysOnTop = true;
+                }
+                
+                int x = workArea.X + workArea.Width - PinnedWidth - marginX;
+                int y = workArea.Y + marginY;
+                appWindow.MoveAndResize(new Windows.Graphics.RectInt32(x, y, PinnedWidth, PinnedHeight));
+            }
+            else
+            {
+                PinIcon.Glyph = "\uE718"; // Pin
+                ToolTipService.SetToolTip(PinButton, "Pin to Corner");
+
+                MainContentGrid.Visibility = Visibility.Visible;
+                BottomAreaGrid.Visibility = Visibility.Visible;
+                RootGrid.Padding = new Thickness(16, 12, 16, 8);
+                
+                if (appWindow.Presenter is OverlappedPresenter presenter)
+                {
+                    presenter.IsAlwaysOnTop = false;
+                }
+                
+                int x = workArea.X + workArea.Width - NormalWidth - marginX;
+                int y = workArea.Y + marginY;
+                appWindow.MoveAndResize(new Windows.Graphics.RectInt32(x, y, NormalWidth, NormalHeight));
+            }
+        }
+
         private async void OnSettingsClicked(object sender, RoutedEventArgs e)
         {
             var folderPicker = new Windows.Storage.Pickers.FolderPicker();

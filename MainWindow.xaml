@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Window.SystemBackdrop>
-        <MicaBackdrop />
+        <DesktopAcrylicBackdrop />
     </Window.SystemBackdrop>
 
     <Grid x:Name="RootGrid" Padding="16,12,16,8" Background="Transparent" CornerRadius="12">
@@ -25,12 +25,19 @@
                 <TextBlock Text="WP" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
             </Border>
             
-            <!-- Custom Close Button -->
-            <Button HorizontalAlignment="Right" VerticalAlignment="Center" 
-                    Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="6"
-                    Click="OnCloseClicked" ToolTipService.ToolTip="Close">
-                <FontIcon Glyph="&#xE711;" FontSize="12" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
-            </Button>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <!-- Custom Pin Button -->
+                <Button x:Name="PinButton" Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="6"
+                        Click="OnPinClicked" ToolTipService.ToolTip="Pin to Corner">
+                    <FontIcon x:Name="PinIcon" Glyph="&#xE718;" FontSize="12" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                </Button>
+                
+                <!-- Custom Close Button -->
+                <Button Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="6"
+                        Click="OnCloseClicked" ToolTipService.ToolTip="Close">
+                    <FontIcon Glyph="&#xE711;" FontSize="12" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                </Button>
+            </StackPanel>
             
             <!-- Toast Notification -->
             <Border x:Name="ToastNotification" 
@@ -44,95 +51,96 @@
             </Border>
         </Grid>
 
-        <!-- Grid layout for images (3x2) -->
-        <GridView Grid.Row="1"
-                  x:Name="WallpaperGridView"
-                  ItemsSource="{x:Bind ViewModel.Images}"
-                  ItemClick="OnImageClicked"
-                  IsItemClickEnabled="True"
-                  SelectionMode="None"
-                  HorizontalAlignment="Stretch"
-                  Padding="0"
-                  ScrollViewer.VerticalScrollBarVisibility="Auto">
-            
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="160" ItemHeight="100" />
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
+        <!-- Main Content Area -->
+        <Grid Grid.Row="1" x:Name="MainContentGrid">
+            <!-- Grid layout for images (3x2) -->
+            <GridView x:Name="WallpaperGridView"
+                      ItemsSource="{x:Bind ViewModel.Images}"
+                      ItemClick="OnImageClicked"
+                      IsItemClickEnabled="True"
+                      SelectionMode="None"
+                      HorizontalAlignment="Stretch"
+                      Padding="0"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto">
+                
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="160" ItemHeight="100" />
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
 
-            <GridView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="144" Height="81">
-                        <Border CornerRadius="8" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
-                            <Image Source="{Binding FilePath}" Stretch="UniformToFill" />
-                        </Border>
-                    </Grid>
-                </DataTemplate>
-            </GridView.ItemTemplate>
-            
-            <GridView.ItemContainerStyle>
-                <Style TargetType="GridViewItem">
-                    <Setter Property="Margin" Value="4" />
-                    <Setter Property="Padding" Value="0" />
-                    <Setter Property="CornerRadius" Value="8" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="GridViewItem">
-                                <Grid>
-                                    <!-- Using standard ContentPresenter instead of strict ListViewItemPresenter -->
-                                    <ContentPresenter 
-                                        ContentTransitions="{TemplateBinding ContentTransitions}"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                        Margin="{TemplateBinding Padding}" />
-                                    
-                                    <!-- Custom Blue Hover Border -->
-                                    <Border BorderBrush="#0078D7" 
-                                            BorderThickness="2" 
-                                            CornerRadius="10" 
-                                            Opacity="0"
-                                            Margin="-2"
-                                            x:Name="HoverBorder"
-                                            IsHitTestVisible="False"/>
-                                            
-                                    <VisualStateManager.VisualStateGroups>
-                                        <VisualStateGroup x:Name="CommonStates">
-                                            <VisualState x:Name="Normal" />
-                                            <VisualState x:Name="PointerOver">
-                                                <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" />
-                                                </Storyboard>
-                                            </VisualState>
-                                            <VisualState x:Name="Pressed">
-                                                <Storyboard>
-                                                    <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.1" />
-                                                </Storyboard>
-                                            </VisualState>
-                                        </VisualStateGroup>
-                                    </VisualStateManager.VisualStateGroups>
-                                </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </GridView.ItemContainerStyle>
-        </GridView>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="144" Height="81">
+                            <Border CornerRadius="8" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
+                                <Image Source="{Binding FilePath}" Stretch="UniformToFill" />
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="4" />
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="CornerRadius" Value="8" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="GridViewItem">
+                                    <Grid>
+                                        <!-- Using standard ContentPresenter instead of strict ListViewItemPresenter -->
+                                        <ContentPresenter 
+                                            ContentTransitions="{TemplateBinding ContentTransitions}"
+                                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                            Margin="{TemplateBinding Padding}" />
+                                        
+                                        <!-- Custom Blue Hover Border -->
+                                        <Border BorderBrush="#0078D7" 
+                                                BorderThickness="2" 
+                                                CornerRadius="10" 
+                                                Opacity="0"
+                                                Margin="-2"
+                                                x:Name="HoverBorder"
+                                                IsHitTestVisible="False"/>
+                                                
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="PointerOver">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <DoubleAnimation Storyboard.TargetName="HoverBorder" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.1" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </GridView.ItemContainerStyle>
+            </GridView>
 
-        <!-- Empty State UI (Brilliant Aesthetic) -->
-        <StackPanel Grid.Row="1" 
-                    HorizontalAlignment="Center" 
-                    VerticalAlignment="Center" 
-                    Visibility="{x:Bind ViewModel.EmptyStateVisibility, Mode=OneWay}"
-                    Spacing="12"
-                    Opacity="0.7">
-            <FontIcon Glyph="&#xEB9F;" FontSize="42" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
-            <TextBlock Text="No wallpapers found" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" />
-            <TextBlock Text="Click the button below to configure a folder." FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
-        </StackPanel>
+            <!-- Empty State UI (Brilliant Aesthetic) -->
+            <StackPanel HorizontalAlignment="Center" 
+                        VerticalAlignment="Center" 
+                        Visibility="{x:Bind ViewModel.EmptyStateVisibility, Mode=OneWay}"
+                        Spacing="12"
+                        Opacity="0.7">
+                <FontIcon Glyph="&#xEB9F;" FontSize="42" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center"/>
+                <TextBlock Text="No wallpapers found" FontSize="16" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" HorizontalAlignment="Center" />
+                <TextBlock Text="Click the button below to configure a folder." FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" HorizontalAlignment="Center" />
+            </StackPanel>
+        </Grid>
 
         <!-- Bottom Area -->
-        <Grid Grid.Row="2" Margin="0,16,0,0">
+        <Grid x:Name="BottomAreaGrid" Grid.Row="2" Margin="0,16,0,0">
             <!-- Settings / Configure Folder Button -->
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" 
