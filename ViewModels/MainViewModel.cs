@@ -30,6 +30,34 @@ namespace WallpaperSwitcher
             }
         }
 
+        private string _folderName = "Configure Folder";
+        public string FolderName
+        {
+            get => _folderName;
+            set
+            {
+                if (_folderName != value)
+                {
+                    _folderName = value;
+                    OnPropertyChanged(nameof(FolderName));
+                }
+            }
+        }
+
+        private string _folderIcon = "\xE713"; // Settings gear by default
+        public string FolderIcon
+        {
+            get => _folderIcon;
+            set
+            {
+                if (_folderIcon != value)
+                {
+                    _folderIcon = value;
+                    OnPropertyChanged(nameof(FolderIcon));
+                }
+            }
+        }
+
         public ObservableCollection<ImageModel> Images { get; set; }
         private List<string> _allImages;
         private const string FolderSettingsKey = "CustomWallpaperFolder";
@@ -87,6 +115,9 @@ namespace WallpaperSwitcher
                         Images.Add(new ImageModel(img));
                     }
                     EmptyStateVisibility = _allImages.Count == 0 ? Microsoft.UI.Xaml.Visibility.Visible : Microsoft.UI.Xaml.Visibility.Collapsed;
+                    
+                    FolderName = new DirectoryInfo(wallpapersPath).Name;
+                    FolderIcon = "\xED25"; // Folder icon
                 }
             }
             catch (Exception ex)

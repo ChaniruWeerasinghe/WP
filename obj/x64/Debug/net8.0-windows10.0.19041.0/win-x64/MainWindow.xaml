@@ -26,21 +26,21 @@
             </Border>
             
             <!-- Custom Close Button -->
-            <Button x:ConnectionId='14' HorizontalAlignment="Right" VerticalAlignment="Center" 
+            <Button x:ConnectionId='16' HorizontalAlignment="Right" VerticalAlignment="Center" 
                     Background="Transparent" BorderThickness="0" Padding="8" CornerRadius="6"
                                            ToolTipService.ToolTip="Close">
                 <FontIcon Glyph="&#xE711;" FontSize="12" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
             </Button>
             
             <!-- Toast Notification -->
-            <Border x:ConnectionId='15' x:Name="ToastNotification" 
+            <Border x:ConnectionId='17' x:Name="ToastNotification" 
                     Background="{ThemeResource SystemAccentColor}" 
                     CornerRadius="6" 
                     Padding="12,6" 
                     HorizontalAlignment="Center" 
                     Opacity="0"
                     IsHitTestVisible="False">
-                <TextBlock x:ConnectionId='16' x:Name="ToastText" Foreground="White" FontSize="12" FontWeight="Medium" />
+                <TextBlock x:ConnectionId='18' x:Name="ToastText" Foreground="White" FontSize="12" FontWeight="Medium" />
             </Border>
         </Grid>
 
@@ -56,14 +56,14 @@
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="3" Orientation="Horizontal" HorizontalAlignment="Center" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="90" Height="90">
-                        <Border CornerRadius="8" Background="#1AFFFFFF">
+                    <Grid Width="160" Height="90">
+                        <Border CornerRadius="8" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                             <Image Source="{Binding FilePath}" Stretch="UniformToFill" />
                         </Border>
                     </Grid>
@@ -139,8 +139,8 @@
                     BorderThickness="1" CornerRadius="6" Padding="12,8"
                                              >
                 <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
-                    <FontIcon Glyph="&#xED25;" FontSize="14" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
-                    <TextBlock Text="Configure Folder" FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                    <FontIcon x:ConnectionId='6'                                                    FontSize="14" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
+                    <TextBlock x:ConnectionId='7'                                                   FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
                 </StackPanel>
             </Button>
         </Grid>
