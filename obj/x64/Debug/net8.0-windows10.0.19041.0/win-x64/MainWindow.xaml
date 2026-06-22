@@ -51,12 +51,12 @@
                                             
                   IsItemClickEnabled="True"
                   SelectionMode="None"
-                  HorizontalAlignment="Center"
+                  HorizontalAlignment="Stretch"
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
@@ -141,7 +141,7 @@
                 <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
                     <FontIcon x:ConnectionId='6'                                                    FontSize="14" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
                     <TextBlock x:ConnectionId='7'                                                   FontSize="13" FontWeight="SemiBold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
-                    <FontIcon Glyph="&#xE70F;" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="8,0,0,0" />
+                    <FontIcon Glyph="&#xE8D8;" FontSize="12" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Margin="8,0,0,0" />
                 </StackPanel>
             </Button>
         </Grid>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WallpaperSwitcher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c44bb50b1890f84c7a5ea4b13cdae90ad173cf45")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d24ded8cc152bd000f8d2f3a376dd56c60d30968")]
 [assembly: System.Reflection.AssemblyProductAttribute("WallpaperSwitcher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WallpaperSwitcher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
