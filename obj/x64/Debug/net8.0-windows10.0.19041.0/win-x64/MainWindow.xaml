@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Window.SystemBackdrop>
-        <DesktopAcrylicBackdrop />
+        <MicaBackdrop Kind="BaseAlt" />
     </Window.SystemBackdrop>
 
     <Grid x:ConnectionId='2' x:Name="RootGrid" Padding="16,16,16,8" Background="Transparent" CornerRadius="12">
@@ -56,7 +56,7 @@
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Stretch" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 

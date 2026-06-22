@@ -224,43 +224,37 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[17];
+            _typeNameTable = new string[14];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
-            _typeNameTable[4] = "Microsoft.UI.Xaml.Media.MicaBackdrop";
+            _typeNameTable[4] = "Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop";
             _typeNameTable[5] = "Microsoft.UI.Xaml.Media.SystemBackdrop";
-            _typeNameTable[6] = "Microsoft.UI.Composition.SystemBackdrops.MicaKind";
-            _typeNameTable[7] = "System.Enum";
-            _typeNameTable[8] = "System.ValueType";
-            _typeNameTable[9] = "Microsoft.UI.Xaml.Controls.GridViewItem";
-            _typeNameTable[10] = "WallpaperSwitcher.MainWindow";
-            _typeNameTable[11] = "Microsoft.UI.Xaml.Window";
-            _typeNameTable[12] = "WallpaperSwitcher.MainViewModel";
-            _typeNameTable[13] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
-            _typeNameTable[14] = "Microsoft.UI.Xaml.DependencyObject";
-            _typeNameTable[15] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
-            _typeNameTable[16] = "Int32";
+            _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.GridViewItem";
+            _typeNameTable[7] = "WallpaperSwitcher.MainWindow";
+            _typeNameTable[8] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[9] = "WallpaperSwitcher.MainViewModel";
+            _typeNameTable[10] = "Microsoft.UI.Xaml.Controls.TreeViewNode";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.DependencyObject";
+            _typeNameTable[12] = "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>";
+            _typeNameTable[13] = "Int32";
 
-            _typeTable = new global::System.Type[17];
+            _typeTable = new global::System.Type[14];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
-            _typeTable[4] = typeof(global::Microsoft.UI.Xaml.Media.MicaBackdrop);
+            _typeTable[4] = typeof(global::Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop);
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Media.SystemBackdrop);
-            _typeTable[6] = typeof(global::Microsoft.UI.Composition.SystemBackdrops.MicaKind);
-            _typeTable[7] = typeof(global::System.Enum);
-            _typeTable[8] = typeof(global::System.ValueType);
-            _typeTable[9] = typeof(global::Microsoft.UI.Xaml.Controls.GridViewItem);
-            _typeTable[10] = typeof(global::WallpaperSwitcher.MainWindow);
-            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Window);
-            _typeTable[12] = typeof(global::WallpaperSwitcher.MainViewModel);
-            _typeTable[13] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
-            _typeTable[14] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
-            _typeTable[15] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
-            _typeTable[16] = typeof(global::System.Int32);
+            _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.GridViewItem);
+            _typeTable[7] = typeof(global::WallpaperSwitcher.MainWindow);
+            _typeTable[8] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[9] = typeof(global::WallpaperSwitcher.MainViewModel);
+            _typeTable[10] = typeof(global::Microsoft.UI.Xaml.Controls.TreeViewNode);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.DependencyObject);
+            _typeTable[12] = typeof(global::System.Collections.Generic.IList<global::Microsoft.UI.Xaml.Controls.TreeViewNode>);
+            _typeTable[13] = typeof(global::System.Int32);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -296,10 +290,10 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
         }
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
-        private object Activate_4_MicaBackdrop() { return new global::Microsoft.UI.Xaml.Media.MicaBackdrop(); }
-        private object Activate_10_MainWindow() { return new global::WallpaperSwitcher.MainWindow(); }
-        private object Activate_12_MainViewModel() { return new global::WallpaperSwitcher.MainViewModel(); }
-        private object Activate_13_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
+        private object Activate_4_DesktopAcrylicBackdrop() { return new global::Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop(); }
+        private object Activate_7_MainWindow() { return new global::WallpaperSwitcher.MainWindow(); }
+        private object Activate_9_MainViewModel() { return new global::WallpaperSwitcher.MainViewModel(); }
+        private object Activate_10_TreeViewNode() { return new global::Microsoft.UI.Xaml.Controls.TreeViewNode(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -307,7 +301,7 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
         }
-        private void VectorAdd_15_IList(object instance, object item)
+        private void VectorAdd_12_IList(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::Microsoft.UI.Xaml.Controls.TreeViewNode>)instance;
             var newItem = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)item;
@@ -344,10 +338,9 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 4:   //  Microsoft.UI.Xaml.Media.MicaBackdrop
+            case 4:   //  Microsoft.UI.Xaml.Media.DesktopAcrylicBackdrop
                 userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Media.SystemBackdrop"));
-                userType.Activator = Activate_4_MicaBackdrop;
-                userType.AddMemberName("Kind");
+                userType.Activator = Activate_4_DesktopAcrylicBackdrop;
                 xamlType = userType;
                 break;
 
@@ -355,49 +348,32 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  Microsoft.UI.Composition.SystemBackdrops.MicaKind
-                userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
-                userType.AddEnumValue("Base", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.Base);
-                userType.AddEnumValue("BaseAlt", global::Microsoft.UI.Composition.SystemBackdrops.MicaKind.BaseAlt);
-                xamlType = userType;
-                break;
-
-            case 7:   //  System.Enum
-                userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
-                xamlType = userType;
-                break;
-
-            case 8:   //  System.ValueType
-                userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                xamlType = userType;
-                break;
-
-            case 9:   //  Microsoft.UI.Xaml.Controls.GridViewItem
+            case 6:   //  Microsoft.UI.Xaml.Controls.GridViewItem
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 10:   //  WallpaperSwitcher.MainWindow
+            case 7:   //  WallpaperSwitcher.MainWindow
                 userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_10_MainWindow;
+                userType.Activator = Activate_7_MainWindow;
                 userType.AddMemberName("ViewModel");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.UI.Xaml.Window
+            case 8:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  WallpaperSwitcher.MainViewModel
+            case 9:   //  WallpaperSwitcher.MainViewModel
                 userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 13:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
+            case 10:   //  Microsoft.UI.Xaml.Controls.TreeViewNode
                 userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.DependencyObject"));
-                userType.Activator = Activate_13_TreeViewNode;
+                userType.Activator = Activate_10_TreeViewNode;
                 userType.AddMemberName("Children");
                 userType.AddMemberName("Content");
                 userType.AddMemberName("Depth");
@@ -409,18 +385,18 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 14:   //  Microsoft.UI.Xaml.DependencyObject
+            case 11:   //  Microsoft.UI.Xaml.DependencyObject
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 15:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
+            case 12:   //  System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>
                 userType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType(this, typeName, type, null);
-                userType.CollectionAdd = VectorAdd_15_IList;
+                userType.CollectionAdd = VectorAdd_12_IList;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 16:   //  Int32
+            case 13:   //  Int32
                 xamlType = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -492,67 +468,57 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.XamlControlsResources)instance;
             that.UseCompactResources = (global::System.Boolean)Value;
         }
-        private object get_1_MicaBackdrop_Kind(object instance)
-        {
-            var that = (global::Microsoft.UI.Xaml.Media.MicaBackdrop)instance;
-            return that.Kind;
-        }
-        private void set_1_MicaBackdrop_Kind(object instance, object Value)
-        {
-            var that = (global::Microsoft.UI.Xaml.Media.MicaBackdrop)instance;
-            that.Kind = (global::Microsoft.UI.Composition.SystemBackdrops.MicaKind)Value;
-        }
-        private object get_2_MainWindow_ViewModel(object instance)
+        private object get_1_MainWindow_ViewModel(object instance)
         {
             var that = (global::WallpaperSwitcher.MainWindow)instance;
             return that.ViewModel;
         }
-        private object get_3_TreeViewNode_Children(object instance)
+        private object get_2_TreeViewNode_Children(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Children;
         }
-        private object get_4_TreeViewNode_Content(object instance)
+        private object get_3_TreeViewNode_Content(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Content;
         }
-        private void set_4_TreeViewNode_Content(object instance, object Value)
+        private void set_3_TreeViewNode_Content(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.Content = (global::System.Object)Value;
         }
-        private object get_5_TreeViewNode_Depth(object instance)
+        private object get_4_TreeViewNode_Depth(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Depth;
         }
-        private object get_6_TreeViewNode_HasChildren(object instance)
+        private object get_5_TreeViewNode_HasChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasChildren;
         }
-        private object get_7_TreeViewNode_HasUnrealizedChildren(object instance)
+        private object get_6_TreeViewNode_HasUnrealizedChildren(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.HasUnrealizedChildren;
         }
-        private void set_7_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
+        private void set_6_TreeViewNode_HasUnrealizedChildren(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.HasUnrealizedChildren = (global::System.Boolean)Value;
         }
-        private object get_8_TreeViewNode_IsExpanded(object instance)
+        private object get_7_TreeViewNode_IsExpanded(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.IsExpanded;
         }
-        private void set_8_TreeViewNode_IsExpanded(object instance, object Value)
+        private void set_7_TreeViewNode_IsExpanded(object instance, object Value)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             that.IsExpanded = (global::System.Boolean)Value;
         }
-        private object get_9_TreeViewNode_Parent(object instance)
+        private object get_8_TreeViewNode_Parent(object instance)
         {
             var that = (global::Microsoft.UI.Xaml.Controls.TreeViewNode)instance;
             return that.Parent;
@@ -572,63 +538,56 @@ namespace WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo
                 xamlMember.Getter = get_0_XamlControlsResources_UseCompactResources;
                 xamlMember.Setter = set_0_XamlControlsResources_UseCompactResources;
                 break;
-            case "Microsoft.UI.Xaml.Media.MicaBackdrop.Kind":
-                userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Media.MicaBackdrop");
-                xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "Kind", "Microsoft.UI.Composition.SystemBackdrops.MicaKind");
-                xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_1_MicaBackdrop_Kind;
-                xamlMember.Setter = set_1_MicaBackdrop_Kind;
-                break;
             case "WallpaperSwitcher.MainWindow.ViewModel":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("WallpaperSwitcher.MainWindow");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "ViewModel", "WallpaperSwitcher.MainViewModel");
-                xamlMember.Getter = get_2_MainWindow_ViewModel;
+                xamlMember.Getter = get_1_MainWindow_ViewModel;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Children":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "Children", "System.Collections.Generic.IList`1<Microsoft.UI.Xaml.Controls.TreeViewNode>");
-                xamlMember.Getter = get_3_TreeViewNode_Children;
+                xamlMember.Getter = get_2_TreeViewNode_Children;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Content":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "Content", "Object");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_4_TreeViewNode_Content;
-                xamlMember.Setter = set_4_TreeViewNode_Content;
+                xamlMember.Getter = get_3_TreeViewNode_Content;
+                xamlMember.Setter = set_3_TreeViewNode_Content;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Depth":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "Depth", "Int32");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_5_TreeViewNode_Depth;
+                xamlMember.Getter = get_4_TreeViewNode_Depth;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasChildren":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "HasChildren", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_6_TreeViewNode_HasChildren;
+                xamlMember.Getter = get_5_TreeViewNode_HasChildren;
                 xamlMember.SetIsReadOnly();
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.HasUnrealizedChildren":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "HasUnrealizedChildren", "Boolean");
-                xamlMember.Getter = get_7_TreeViewNode_HasUnrealizedChildren;
-                xamlMember.Setter = set_7_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Getter = get_6_TreeViewNode_HasUnrealizedChildren;
+                xamlMember.Setter = set_6_TreeViewNode_HasUnrealizedChildren;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.IsExpanded":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "IsExpanded", "Boolean");
                 xamlMember.SetIsDependencyProperty();
-                xamlMember.Getter = get_8_TreeViewNode_IsExpanded;
-                xamlMember.Setter = set_8_TreeViewNode_IsExpanded;
+                xamlMember.Getter = get_7_TreeViewNode_IsExpanded;
+                xamlMember.Setter = set_7_TreeViewNode_IsExpanded;
                 break;
             case "Microsoft.UI.Xaml.Controls.TreeViewNode.Parent":
                 userType = (global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlUserType)GetXamlTypeByName("Microsoft.UI.Xaml.Controls.TreeViewNode");
                 xamlMember = new global::WallpaperSwitcher.WallpaperSwitcher_XamlTypeInfo.XamlMember(this, "Parent", "Microsoft.UI.Xaml.Controls.TreeViewNode");
-                xamlMember.Getter = get_9_TreeViewNode_Parent;
+                xamlMember.Getter = get_8_TreeViewNode_Parent;
                 xamlMember.SetIsReadOnly();
                 break;
             }
