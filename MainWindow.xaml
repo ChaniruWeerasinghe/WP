@@ -8,7 +8,7 @@
     mc:Ignorable="d">
 
     <Window.SystemBackdrop>
-        <MicaBackdrop Kind="BaseAlt" />
+        <MicaBackdrop />
     </Window.SystemBackdrop>
 
     <Grid x:Name="RootGrid" Padding="16,16,16,8" Background="Transparent" CornerRadius="12">
@@ -57,13 +57,13 @@
             
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="200" ItemHeight="116" />
+                    <ItemsWrapGrid MaximumRowsOrColumns="2" Orientation="Horizontal" HorizontalAlignment="Center" ItemWidth="160" ItemHeight="100" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
 
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Grid Width="192" Height="108">
+                    <Grid Width="144" Height="81">
                         <Border CornerRadius="8" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}">
                             <Image Source="{Binding FilePath}" Stretch="UniformToFill" />
                         </Border>
