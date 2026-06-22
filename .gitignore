@@ -1,0 +1,10 @@
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.log
+*.zip
+crash.txt
+app_crash.txt
