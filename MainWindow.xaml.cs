@@ -54,8 +54,8 @@ namespace WallpaperSwitcher
                 DisplayArea displayArea = DisplayArea.GetFromWindowId(windowId, DisplayAreaFallback.Primary);
                 var workArea = displayArea.WorkArea;
 
-                int windowWidth = 480;
-                int windowHeight = 400;
+                int windowWidth = 520;
+                int windowHeight = 440;
                 int marginX = 24; 
                 int marginY = 24; 
 

@@ -52,6 +52,7 @@
                   IsItemClickEnabled="True"
                   SelectionMode="None"
                   HorizontalAlignment="Stretch"
+                  Padding="0"
                   ScrollViewer.VerticalScrollBarVisibility="Auto">
             
             <GridView.ItemsPanel>
