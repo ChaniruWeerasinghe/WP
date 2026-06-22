@@ -289,3 +289,4 @@ C:\Work - Chanii\Projects\WP\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\pr
 C:\Work - Chanii\Projects\WP\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\qualifiers.txt
 C:\Work - Chanii\Projects\WP\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\qualifiers.txt.intermediate
 C:\Work - Chanii\Projects\WP\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Work - Chanii\Projects\WP\obj\x64\Debug\net8.0-windows10.0.19041.0\win-x64\WallpaperSwitcher.sourcelink.json

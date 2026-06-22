@@ -95,6 +95,23 @@ namespace WallpaperSwitcher
             ViewModel.NextPage();
         }
 
+        private async void OnSettingsClicked(object sender, RoutedEventArgs e)
+        {
+            var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+            folderPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
+            folderPicker.FileTypeFilter.Add("*");
+
+            IntPtr windowHandle = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(folderPicker, windowHandle);
+
+            Windows.Storage.StorageFolder folder = await folderPicker.PickSingleFolderAsync();
+            if (folder != null)
+            {
+                ViewModel.ChangeFolder(folder.Path);
+                ShowToast("Folder updated!", false);
+            }
+        }
+
         private async void ShowToast(string message, bool isError)
         {
             ToastText.Text = message;
