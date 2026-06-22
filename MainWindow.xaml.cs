@@ -5,11 +5,34 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
 using System;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 namespace WallpaperSwitcher
 {
     public sealed partial class MainWindow : Window
     {
+        [DllImport("user32.dll", EntryPoint = "GetWindowLongPtr")]
+        static extern IntPtr GetWindowLongPtr(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLongPtr")]
+        static extern IntPtr SetWindowLongPtr(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+        [DllImport("user32.dll")]
+        static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        const int GWL_EXSTYLE = -20;
+        const int GWLP_HWNDPARENT = -8;
+        const long WS_EX_APPWINDOW = 0x00040000L;
+        const long WS_EX_TOOLWINDOW = 0x00000080L;
+        
+        static readonly IntPtr HWND_BOTTOM = new IntPtr(1);
+        const uint SWP_NOSIZE = 0x0001;
+        const uint SWP_NOMOVE = 0x0002;
+        const uint SWP_NOACTIVATE = 0x0010;
+
         public MainViewModel ViewModel { get; }
 
         public MainWindow()
@@ -28,7 +51,15 @@ namespace WallpaperSwitcher
             this.Title = "Wallpaper Switcher";
             WallpaperGridView.ItemsSource = ViewModel.Images;
             
+            this.Activated += MainWindow_Activated;
             SetWindowFloatingAndPosition();
+        }
+
+        private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
+        {
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            // Force it to the very bottom of the window stack (on top of desktop, behind all apps)
+            SetWindowPos(hWnd, HWND_BOTTOM, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE);
         }
 
         private void SetWindowFloatingAndPosition()
@@ -36,6 +67,18 @@ namespace WallpaperSwitcher
             try
             {
                 var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+
+                // Hide from Taskbar and Alt-Tab
+                long style = (long)GetWindowLongPtr(hWnd, GWL_EXSTYLE);
+                SetWindowLongPtr(hWnd, GWL_EXSTYLE, new IntPtr((style & ~WS_EX_APPWINDOW) | WS_EX_TOOLWINDOW));
+
+                // Bind ownership to the Desktop (Progman) to prevent Win+D from hiding the widget
+                IntPtr progman = FindWindow("Progman", null);
+                if (progman != IntPtr.Zero)
+                {
+                    SetWindowLongPtr(hWnd, GWLP_HWNDPARENT, progman);
+                }
+
                 WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
                 AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
 
@@ -47,7 +90,7 @@ namespace WallpaperSwitcher
                     presenter.IsMaximizable = false;
                     presenter.IsMinimizable = false; 
                     presenter.IsResizable = false;
-                    presenter.IsAlwaysOnTop = true;
+                    presenter.IsAlwaysOnTop = false;
                     presenter.SetBorderAndTitleBar(true, false); // Completely removes native title bar
                 }
 

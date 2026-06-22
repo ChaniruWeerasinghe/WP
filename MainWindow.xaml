@@ -11,7 +11,7 @@
         <MicaBackdrop />
     </Window.SystemBackdrop>
 
-    <Grid x:Name="RootGrid" Padding="16,16,16,8" Background="Transparent" CornerRadius="12">
+    <Grid x:Name="RootGrid" Padding="16,12,16,8" Background="Transparent" CornerRadius="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" /> <!-- Title Bar Area -->
             <RowDefinition Height="*" />    <!-- Grid Area -->
@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title Bar Area -->
-        <Grid Grid.Row="0" Margin="0,0,0,16">
+        <Grid Grid.Row="0" Margin="0,0,0,8">
             <!-- WP Badge -->
             <Border Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" CornerRadius="6" Padding="6,4" HorizontalAlignment="Left" VerticalAlignment="Center">
                 <TextBlock Text="WP" FontSize="11" FontWeight="Bold" Foreground="{ThemeResource TextFillColorPrimaryBrush}" />
